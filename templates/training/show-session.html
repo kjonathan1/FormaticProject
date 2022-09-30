@@ -1,0 +1,12 @@
+Session details
+
+{{session.nom}}
+<hr>
+{{session.start_date}} - {{session.description}}
+<br>
+{{session.module_ids}}
+<br>
+
+<a href="{% url 'update-session' session.id %}">Edit</a> -
+<a href="{% url 'list-session' %}">List</a>
+<a href="{% url 'delete-session' session.id %}">Delete</a>

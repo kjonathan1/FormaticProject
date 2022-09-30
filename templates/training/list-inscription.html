@@ -1,0 +1,12 @@
+all inscrption are here
+
+{% for inscription in inscriptions %}
+    <br/>
+    {{ inscription.etudiant_id }} - {{ inscription.session_id }} - {{ inscription.date }} - {{ inscription.montant }}
+    <a href="{% url 'update-inscription' inscription.id %}">Edit</a>
+    <a href="{% url 'show-inscription' inscription.id %}">Show</a>
+    <a href="{% url 'delete-inscription' inscription.id %}">Delete</a>
+    <br/>
+{% endfor %}
+
+<a href="{% url 'create-inscription' %}">Add</a>

@@ -1,0 +1,12 @@
+all modules are here
+
+{% for module in modules %}
+    <br/>
+    {{ module.nom }} - {{ module.start_date }} - 
+    <a href="{% url 'update-module' module.id %}">Edit</a>
+    <a href="{% url 'show-module' module.id %}">Show</a>
+    <a href="{% url 'delete-module' module.id %}">Delete</a>
+    <br/>
+{% endfor %}
+
+<a href="{% url 'create-module' %}">Add</a>

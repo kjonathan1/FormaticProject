@@ -1,0 +1,6 @@
+db.sqlite
+training/_pycache_/
+migrations/_pycache_/
+FormaticProject/_pycache_/
+InvoiceApp/_pycache_/
+migrations/_pycache_/

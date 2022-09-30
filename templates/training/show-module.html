@@ -1,0 +1,9 @@
+module details
+
+{{module.nom}}
+<hr>
+{{module.start_date}} - {{module.description}}
+
+<a href="{% url 'update-module' module.id %}">Edit</a> -
+<a href="{% url 'list-module' %}">List</a>
+<a href="{% url 'delete-module' module.id %}">Delete</a>

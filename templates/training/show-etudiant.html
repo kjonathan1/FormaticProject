@@ -1,0 +1,10 @@
+etudiant details
+
+{{etudiant.nom}}
+<hr>
+{{etudiant.email}} - {{etudiant.tel}}
+
+<a href="{% url 'update-etudiant' etudiant.id %}">Edit</a> -
+<a href="{% url 'list-etudiant' %}">List</a>
+<a href="{% url 'delete-etudiant' etudiant.id %}">Delete</a>
+<a href="{% url 'inscrire-etudiant' etudiant.id %}">Inscrire</a>

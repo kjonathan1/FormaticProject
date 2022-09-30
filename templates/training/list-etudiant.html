@@ -1,0 +1,13 @@
+all etudiant are here
+
+{% for etudiant in etudiants %}
+    <br/>
+    {{ etudiant.nom }} - {{ etudiant.email }} - 
+    <a href="{% url 'update-etudiant' etudiant.id %}">Edit</a>
+    <a href="{% url 'show-etudiant' etudiant.id %}">Show</a>
+    <a href="{% url 'delete-etudiant' etudiant.id %}">Delete</a>
+    <a href="{% url 'inscrire-etudiant' etudiant.id %}">Inscrire</a>
+    <br/>
+{% endfor %}
+
+<a href="{% url 'create-etudiant' %}">Add</a>

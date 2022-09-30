@@ -1,0 +1,13 @@
+all session are here
+
+{% for session in sessions %}
+    <br/>
+    {{ session.nom }} - {{ session.start_date }} - 
+    <a href="{% url 'update-session' session.id %}">Edit</a>
+    <a href="{% url 'show-session' session.id %}">Show</a>
+    <a href="{% url 'delete-session' session.id %}">Delete</a>
+    <a href="{% url 'inscrire-etudiant' session.id %}">Inscrire</a>
+    <br/>
+{% endfor %}
+
+<a href="{% url 'create-session' %}">Add</a>

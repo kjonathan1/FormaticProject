@@ -1,0 +1,10 @@
+Cette application a pour but de permettre la generation de facture en ligne
+
+entitees - classes
+
+-Invoice
+-InvoiceLine
+-Product
+-ProductCategorie
+-Customer
+
