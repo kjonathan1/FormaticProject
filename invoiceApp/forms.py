@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.forms import widgets
 from .models import *
@@ -32,16 +33,22 @@ class ProductForm(forms.ModelForm):
         fields = ['title', 'description']
 
 
-class ClientForm(forms.ModelForm):
+class ClientForm(ModelForm):
     class meta:
-        model = Client
+        # model = Client
         fields = ['clientName', 'province']
+
+class ClientForm2(ModelForm):
+    class Meta:
+        model = Client
+        fields = "__all__"
+
 
 
 class InvoiceForm(forms.ModelForm):
     class meta:
         model = Invoice
-        fields = ['title', 'notes']
+        fields = ['title', 'notes', 'dueDate']
 
 
 class SettingsForm(forms.ModelForm):

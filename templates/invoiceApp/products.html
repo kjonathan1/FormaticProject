@@ -10,8 +10,7 @@
     <h1 class="h2">Products</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Print</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        <a href="{% url 'create-invoice' %}"><button type="submit" class="btn btn-primary">Create a new Invoice</button></a>
       </div>
     </div>
   </div>
@@ -36,6 +35,18 @@
 
 
 
+  </div>
+  <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8">
+      <h3>Add First Client</h3>
+      <img src="{% static 'assets/img/empty.svg' %}" alt="">
+    </div>
+    <div class="col-lg-3">
+
+    </div>
   </div>
 </main>
 {% endblock %}

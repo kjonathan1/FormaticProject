@@ -74,7 +74,10 @@ def dashboard(request):
 
 @login_required
 def invoices(request):
-    return render(request, 'invoiceApp/invoices.html')
+    context = {}
+    invoices = Invoice.objects.all()
+    context['invoices'] = invoices
+    return render(request, 'invoiceApp/invoices.html', context)
 
 
 @login_required
@@ -89,10 +92,14 @@ def clients(request):
     clients = Client.objects.all()
     context['clients'] = clients
 
+    if request.method == 'GET':
+        form = ClientForm2()
+        context['form'] = form
+        return render(request, 'invoiceApp/clients.html', context)
 
     if request.method == 'POST':
-        form = ClientForm(request.POST, request.FILES)
-
+        form = ClientForm2(request.POST, request.FILES)
+        
         if form.is_valid():
             form.save()
 
@@ -103,3 +110,42 @@ def clients(request):
             return redirect('clients')
 
     return render(request, 'invoiceApp/clients.html', context)
+
+    ##------------------ Create Invoice Views Start here ------------------##
+
+@login_required
+def createInvoice(request):
+    number =    "INV-" + str(uuid4()).split('-')[1]
+    newInvoice = Invoice.objects.create(number=number) 
+    newInvoice.save()
+    inv = Invoice.objects.get(number=number)
+
+    return redirect('create-build-invoice', slug=inv.slug)
+    
+
+@login_required
+def createBuildInvoice(request, slug):# fetch that invoice
+    #invoice = Invoice.objects.get(slug=slug) i'll user try catch
+    try:
+        invoice = Invoice.objects.get(slug=slug) 
+        pass
+    except: 
+        messages.error(request, 'something went wrong.')
+        return redirect('invoices')
+    
+
+    # fetch all the product related to this invoice
+    products = Product.objects.filter(invoice=invoice)
+
+    context = {}
+    context['invoice'] = invoice
+    context['products'] = products
+
+    if request.method == 'GET':
+        prod_form = ProductForm()
+        inv_form = InvoiceForm()
+        context['prod_form'] = prod_form
+        context['inv_form'] = inv_form
+        return render(request, 'invoiceApp/create-invoice.html', context)
+
+    return render(request, 'invoiceApp/create-invoice.html', context)
